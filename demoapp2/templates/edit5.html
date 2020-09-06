@@ -1,0 +1,59 @@
+<html>
+   <body>
+    <a href="{{url_for('results')}}">Click to see existing entries</a><br>
+    <a href="{{url_for('delete')}}">Delete some elements</a><br>
+    <a href="{{url_for('insert')}}">Insert some elements</a><br>
+
+      <form action = "{{url_for('edit')}}" method = "POST">
+        <p><h3>Select username</h3></p>
+            <select name="name" id="name">
+                {% for row in name_rows %}
+                    <option value="{{row[0]}}">{{row[0]}}</option>
+                {% endfor %}
+                </select>
+            <br><br>
+
+        <p><h4>Edit your branch: </p>
+            <select name="branch" id="branch">
+                <option value="mech">Mechanical</option>
+                <option value="comps">Computer</option>
+                <option value="it">IT</option>
+                <option value="elec">Electrical</option>
+            </select>
+            <br><br>
+        <p>Edit Semester</p>
+            <select name="sem" id="sem">
+                <option value="1">sem 1</option>
+                <option value="2">sem 2</option>
+                <option value="3">sem 3</option>
+                <option value="4">sem 4</option>
+                <option value="5">sem 5</option>
+                <option value="6">sem 6</option>
+                <option value="7">sem 7</option>
+                <option value="8">sem 8</option>
+            </select>
+         <p><h4>Edit marks</p>
+         <p> <input type='text' name='marks'/>></p>   
+        <p><input type = 'submit' value = 'Edit'/></p>
+      </form>
+
+      <table border=5 style="float:right;">  
+        <thead>  
+            <td>Name</td>  
+            <td>Branch</td>  
+            <td>Sem</td>
+            <td>Marks</td>  
+        </thead>  
+          
+        {% for row in all_rows %}   
+            <tr>  
+                <td>{{row[0]}}</td>  
+                <td>{{row[1]}}</td>  
+                <td>{{row[2]}}</td>  
+                <td>{{row[3]}}</td>
+            </tr>  
+        {% endfor %}
+    </table>  
+    <br><br><br><br><br><br><br><br>  
+   </body>
+</html>
